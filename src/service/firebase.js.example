@@ -1,0 +1,8 @@
+import firebase from 'firebase'
+
+const config = {
+  apiKey: 'YOUR_API_KEY',
+  databaseURL: 'YOUR_DATABASE_URL'
+}
+
+firebase.initializeApp(config)
