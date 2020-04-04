@@ -79,44 +79,24 @@ const Player = () => {
     answers
   } = gameObj.val()
   const players = playersObj.val()
-
+  const isAnswerer = player.answererMatchIndexes.includes(currentMatch)
   if (loading) {
     return <div>LOADING . . .</div>
   }
 
-  // TODO: use storybook for scene development
-  // const currentScene = 'VOTE'
-
   switch (currentScene) {
     case 'HOME': {
-      const loggedIn = playerKey !== -1
-
-      // TEST DATA //
-      // const playerName = "bookn"
-      // const loggedIn = false
-      // const login = () => {}
-      // END TEST DATA //
-      
+      const loggedIn = playerKey !== -1      
       return (
         <Home
           playerName={playerName}
           loggedIn={loggedIn}
           setPlayerName={setPlayerName}
           login={() => login(playerName, setPlayerKey)}
-          // login={login}
         />
       )
     }
     case 'ANSWER': {
-      const isAnswerer = player.answererMatchIndexes.includes(currentMatch)
-
-      // TEST DATA //
-      // const timer = 2
-      // const isAnswerer = false
-      // const question = "ใครคือคนที่หล่อที่สุดในโลก6"
-      // const answer = () => {}
-      // END TEST DATA //
-
       return (
         <Answer
           timer={timer}
@@ -124,48 +104,11 @@ const Player = () => {
           question={question}
           setAnswerText={setAnswerText}
           player={player}
-          // answer={answer}
           answer={() => answer(playerKey, answerText)}
         />
       )
     }
     case 'VOTE': {
-      const isAnswerer = player.answererMatchIndexes.includes(currentMatch)
-
-      // TEST DATA //
-      // const timer = 2
-      // const isAnswerer = false
-      // const answers = [
-      //   { answeredBy: "-M3qkcLoYB1qwyQ7EOWy", text: "กุเอง" },
-      //   { answeredBy: "-M3qkcZ8Y4Lq51AZTfLr", text: "ดด" }
-      // ]
-      // const question = "ใครคือคนที่หล่อที่สุดในโลก6"
-      // const players = {
-      //   '-M3qkcLoYB1qwyQ7EOWy': {
-      //     answer: "กุเอง",
-      //     answererMatchIndexes: [0, 2],
-      //     name: "bookn",
-      //     score: 0,
-      //     voteTo: "-M3qkcZ8Y4Lq51AZTfLr"
-      //   },
-      //   '-M3qkcZ8Y4Lq51AZTfLr': {
-      //     answer: "หนูเอง",
-      //     answererMatchIndexes: [0, 1],
-      //     name: "eiei",
-      //     score: 300,
-      //     voteTo: "-M3qkcqRFiTFlrPliv8R"
-      //   },
-      //   '-M3qkcqRFiTFlrPliv8R': {
-      //     answer: "อิอิ",
-      //     answererMatchIndexes: [1, 2],
-      //     name: "huhu",
-      //     score: 150,
-      //     voteTo: "-M3qkcZ8Y4Lq51AZTfLr"
-      //   }
-      // }
-      // const vote = () => {}
-      // END TEST DATA //
-
       return (
         <Vote
           timer={timer}
@@ -174,43 +117,11 @@ const Player = () => {
           question={question}
           players={players}
           player={player}
-          // vote={vote}
           vote={(answeredBy) => vote(playerKey, answeredBy)}
         />
       )
     }
     case 'VOTE_RESULT': {
-      // TEST DATA //
-      // const question = "ใครคือคนที่หล่อที่สุดในโลก4"
-      // const answers = [
-      //   { answeredBy: "-M3qkcLoYB1qwyQ7EOWy", text: "กุเอง" },
-      //   { answeredBy: "-M3qkcqRFiTFlrPliv8R", isWonTheMatch: true, text: "อิอิ", votedBy: ["-M3qkcZ8Y4Lq51AZTfLr"]}
-      // ]
-      // const players = {
-      //   '-M3qkcLoYB1qwyQ7EOWy': {
-      //     answer: "กุเอง",
-      //     answererMatchIndexes: [0, 2],
-      //     name: "bookn",
-      //     score: 0,
-      //     voteTo: "-M3qkcZ8Y4Lq51AZTfLr"
-      //   },
-      //   '-M3qkcZ8Y4Lq51AZTfLr': {
-      //     answer: "หนูเอง",
-      //     answererMatchIndexes: [0, 1],
-      //     name: "eiei",
-      //     score: 300,
-      //     voteTo: "-M3qkcqRFiTFlrPliv8R"
-      //   },
-      //   '-M3qkcqRFiTFlrPliv8R': {
-      //     answer: "อิอิ",
-      //     answererMatchIndexes: [1, 2],
-      //     name: "huhu",
-      //     score: 150,
-      //     voteTo: "-M3qkcZ8Y4Lq51AZTfLr"
-      //   }
-      // }
-      // END TEST DATA //
-
       return (
         <VoteResult
           question={question}

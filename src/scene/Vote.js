@@ -23,7 +23,6 @@ const Component = (props) => {
       <Row gutter={16}>
         <Col offset={6}></Col>
           {answers.map((answer) => {
-            console.log('here', players)
             return (
               <Col>
                 <Card size="small" title={<Player name={players[answer.answeredBy].name} />} style={{ width: 300 }}>
