@@ -1,7 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Setup
-There are 2 files you edit first before running the Joybox.
+There are 2 files you have to edit first before running the Joybox.
 ```
 /src/service/firebase.js.example
 /.firebaserc.example
