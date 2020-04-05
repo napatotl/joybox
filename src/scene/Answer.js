@@ -35,6 +35,11 @@ const Component = ({ isAnswerer, question, setAnswerText, answer, timer, player 
   return (
     <Container>
       <Row>
+          <Col span={12} offset={6}>
+            <Title level={4}>{`Timer: ${timer}`}</Title>
+          </Col>
+      </Row>
+      <Row>
         <Col span={12} offset={6}>
           <Title level={2}>Not your turn, Please wait.</Title>
         </Col>
