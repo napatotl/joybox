@@ -25,7 +25,7 @@ const Component = (props) => {
           {answers.map((answer) => {
             return (
               <Col>
-                <Card size="small" title={<Player name={players[answer.answeredBy].name} />} style={{ width: 300 }}>
+                <Card size="small"  style={{ width: 300 }}>
                   <Title level={4}>{answer.text}</Title>
                   <Button disabled={isAnswerer || player.voteTo} onClick={() => vote(answer.answeredBy)}>Vote</Button>
                 </Card>
