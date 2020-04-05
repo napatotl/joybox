@@ -1,6 +1,5 @@
 import React from 'react'
 import VoteResult from '../scene/VoteResult'
-import TotalScore from '../component/TotalScore'
 
 export default {
   title: '[Scene] VoteResult',
@@ -36,12 +35,9 @@ const players = {
 }
 
 export const Normal = () => (
-  <React.Fragment>
-    <VoteResult
-      question={'1 + 1 = ?'}
-      answers={answers}
-      players={players}
-    />
-    <TotalScore players={players} />
-  </React.Fragment>
+  <VoteResult
+    question={'1 + 1 = ?'}
+    answers={answers}
+    players={players}
+  />
 )

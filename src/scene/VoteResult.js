@@ -2,6 +2,7 @@ import React from 'react'
 import { Row, Col, Typography, Card } from 'antd'
 import Container from '../component/Container'
 import Player from '../component/Player'
+import TotalScore from '../component/TotalScore'
 
 const { Title, Text } = Typography
 
@@ -39,6 +40,7 @@ const Component = (props) => {
             )
           })}
       </Row>
+      <TotalScore players={players} />
     </Container>
   )
 }

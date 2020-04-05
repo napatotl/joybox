@@ -1,7 +1,6 @@
 import React from 'react'
 import { action } from '@storybook/addon-actions'
 import Answer from '../scene/Answer'
-import TotalScore from '../component/TotalScore'
 
 export default {
   title: '[Scene] Answer',
@@ -40,29 +39,25 @@ const player = {
 
 
 export const Answerer = () => (
-  <React.Fragment>
-    <Answer
-      timer={30}
-      isAnswerer={true}
-      question={'1 + 1 = ?'}
-      player={player}
-      setAnswerText={action('type')}
-      answer={action('answer')}
-    />
-    <TotalScore players={players} />
-  </React.Fragment>
+  <Answer
+    timer={30}
+    isAnswerer={true}
+    question={'1 + 1 = ?'}
+    player={player}
+    setAnswerText={action('type')}
+    answer={action('answer')}
+    players={players}
+  />
 )
 
 export const NotAnswerer = () => (
-  <React.Fragment>
-    <Answer
-      timer={30}
-      isAnswerer={false}
-      question={'1 + 1 = ?'}
-      player={player}
-      setAnswerText={action('type')}
-      answer={action('answer')}
-    />
-    <TotalScore players={players} />
-  </React.Fragment>
+  <Answer
+    timer={30}
+    isAnswerer={false}
+    question={'1 + 1 = ?'}
+    player={player}
+    setAnswerText={action('type')}
+    answer={action('answer')}
+    players={players}
+  />
 )
