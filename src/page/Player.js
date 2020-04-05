@@ -79,7 +79,7 @@ const Player = () => {
     answers
   } = gameObj.val()
   const players = playersObj.val()
-  const isAnswerer = player.answererMatchIndexes.includes(currentMatch)
+
   if (loading) {
     return <div>LOADING . . .</div>
   }
@@ -97,6 +97,7 @@ const Player = () => {
       )
     }
     case 'ANSWER': {
+      const isAnswerer = player.answererMatchIndexes.includes(currentMatch)
       return (
         <Answer
           timer={timer}
@@ -109,6 +110,7 @@ const Player = () => {
       )
     }
     case 'VOTE': {
+      const isAnswerer = player.answererMatchIndexes.includes(currentMatch)
       return (
         <Vote
           timer={timer}
