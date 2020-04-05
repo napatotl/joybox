@@ -1,6 +1,7 @@
 import React from 'react'
 import { action } from '@storybook/addon-actions'
 import Vote from '../scene/Vote'
+import TotalScore from '../component/TotalScore'
 
 export default {
   title: '[Scene] Vote',
@@ -41,7 +42,8 @@ const players = {
 }
 
 export const Answerer = () => (
-  <Vote
+  <React.Fragment>
+    <Vote
       timer={30}
       isAnswerer={true}
       question={'1 + 1 = ?'}
@@ -50,10 +52,13 @@ export const Answerer = () => (
       vote={action('vote')}
       answers={answers}
     />
+    <TotalScore players={players} />
+  </React.Fragment>
 )
 
 export const NotAnswerer = () => (
-  <Vote
+  <React.Fragment>
+    <Vote
       timer={30}
       isAnswerer={false}
       question={'1 + 1 = ?'}
@@ -62,4 +67,6 @@ export const NotAnswerer = () => (
       vote={action('vote')}
       answers={answers}
     />
+    <TotalScore players={players} />
+  </React.Fragment>
 )

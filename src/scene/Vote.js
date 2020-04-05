@@ -1,12 +1,11 @@
 import React from 'react'
 import { Row, Col, Card, Typography, Button } from 'antd'
-import Player from '../component/Player'
 import Container from '../component/Container'
 
 const { Title } = Typography
 
 const Component = (props) => {
-  const { isAnswerer, answers, vote, question, players, timer, player } = props
+  const { isAnswerer, answers, vote, question, timer, player } = props
 
   return (
     <Container>

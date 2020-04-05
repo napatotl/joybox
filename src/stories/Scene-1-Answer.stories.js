@@ -1,10 +1,35 @@
 import React from 'react'
 import { action } from '@storybook/addon-actions'
 import Answer from '../scene/Answer'
+import TotalScore from '../component/TotalScore'
 
 export default {
   title: '[Scene] Answer',
   component: Answer,
+}
+
+const players = {
+  '-M3qkcLoYB1qwyQ7EOWy': {
+    answer: 'กุเอง',
+    answererMatchIndexes: [0, 2],
+    name: 'bookn',
+    score: 0,
+    voteTo: '-M3qkcZ8Y4Lq51AZTfLr'
+  },
+  '-M3qkcZ8Y4Lq51AZTfLr': {
+    answer: 'หนูเอง',
+    answererMatchIndexes: [0, 1],
+    name: 'eiei',
+    score: 300,
+    voteTo: '-M3qkcqRFiTFlrPliv8R'
+  },
+  '-M3qkcqRFiTFlrPliv8R': {
+    answer: 'อิอิ',
+    answererMatchIndexes: [1, 2],
+    name: 'huhu',
+    score: 150,
+    voteTo: '-M3qkcZ8Y4Lq51AZTfLr'
+  }
 }
 
 const player = {
@@ -15,7 +40,8 @@ const player = {
 
 
 export const Answerer = () => (
-  <Answer
+  <React.Fragment>
+    <Answer
       timer={30}
       isAnswerer={true}
       question={'1 + 1 = ?'}
@@ -23,10 +49,13 @@ export const Answerer = () => (
       setAnswerText={action('type')}
       answer={action('answer')}
     />
+    <TotalScore players={players} />
+  </React.Fragment>
 )
 
 export const NotAnswerer = () => (
-  <Answer
+  <React.Fragment>
+    <Answer
       timer={30}
       isAnswerer={false}
       question={'1 + 1 = ?'}
@@ -34,4 +63,6 @@ export const NotAnswerer = () => (
       setAnswerText={action('type')}
       answer={action('answer')}
     />
+    <TotalScore players={players} />
+  </React.Fragment>
 )

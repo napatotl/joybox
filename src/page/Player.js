@@ -3,6 +3,9 @@ import '../App.css'
 import { useObject } from 'react-firebase-hooks/database'
 import firebase from 'firebase'
 
+// Components
+import TotalScore from '../component/TotalScore'
+
 import Home from '../scene/Home'
 import Answer from '../scene/Answer'
 import Vote from '../scene/Vote'
@@ -41,6 +44,7 @@ const Player = () => {
   const [player, setPlayer] = useState({})
 
   const [gameObj] = useObject(firebase.database().ref('game'))
+  console.log(gameObj)
   const [playersObj] = useObject(firebase.database().ref('players'))
 
   useEffect(() => {
@@ -85,7 +89,7 @@ const Player = () => {
 
   switch (currentScene) {
     case 'HOME': {
-      const loggedIn = playerKey !== -1      
+      const loggedIn = playerKey !== -1
       return (
         <Home
           playerName={playerName}
@@ -98,37 +102,46 @@ const Player = () => {
     case 'ANSWER': {
       const isAnswerer = player.answererMatchIndexes.includes(currentMatch)
       return (
-        <Answer
-          timer={timer}
-          isAnswerer={isAnswerer}
-          question={question}
-          setAnswerText={setAnswerText}
-          player={player}
-          answer={() => answer(playerKey, answerText)}
-        />
+        <React.Fragment>
+          <Answer
+            timer={timer}
+            isAnswerer={isAnswerer}
+            question={question}
+            setAnswerText={setAnswerText}
+            player={player}
+            answer={() => answer(playerKey, answerText)}
+          />
+          <TotalScore players={players} />
+        </React.Fragment>
       )
     }
     case 'VOTE': {
       const isAnswerer = player.answererMatchIndexes.includes(currentMatch)
       return (
-        <Vote
-          timer={timer}
-          isAnswerer={isAnswerer}
-          answers={answers}
-          question={question}
-          players={players}
-          player={player}
-          vote={(answeredBy) => vote(playerKey, answeredBy)}
-        />
+        <React.Fragment>
+          <Vote
+            timer={timer}
+            isAnswerer={isAnswerer}
+            answers={answers}
+            question={question}
+            players={players}
+            player={player}
+            vote={(answeredBy) => vote(playerKey, answeredBy)}
+          />
+          <TotalScore players={players} />
+        </React.Fragment>
       )
     }
     case 'VOTE_RESULT': {
       return (
-        <VoteResult
-          question={question}
-          answers={answers}
-          players={players}
-        />
+        <React.Fragment>
+          <VoteResult
+            question={question}
+            answers={answers}
+            players={players}
+          />
+          <TotalScore players={players} />
+        </React.Fragment>
       )
     }
     case 'END': {

@@ -39,21 +39,6 @@ const Component = (props) => {
             )
           })}
       </Row>
-      <Row>
-        <Col span={12} offset={6}>
-          <Title level={2}>Total score</Title>
-          {
-            Object.keys(players).map((key) => {
-              const player = players[key]
-              return (
-                <div>
-                  <Player name={player.name} score={player.score} />
-                </div>
-              )
-            })
-          }
-        </Col>
-      </Row>
     </Container>
   )
 }
