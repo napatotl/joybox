@@ -1,8 +1,7 @@
 import React from 'react'
-import { Layout } from 'antd'
+import { Layout, Typography } from 'antd'
 import 'antd/dist/antd.css'
-import { Typography } from 'antd';
-const { Title } = Typography;
+const { Title } = Typography
 
 const { Header, Content } = Layout
 

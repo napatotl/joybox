@@ -39,7 +39,7 @@ const Scene = {
   toVote: async (currentMatch) => {
     const players = (await playersRef.once('value')).val()
     const answers = getAnswersFromPlayers(players, currentMatch)
-    
+
     gameRef.update({
       currentScene: 'VOTE',
       timer: VOTE_TIMER,
@@ -50,12 +50,10 @@ const Scene = {
     const players = (await playersRef.once('value')).val()
     const answers = getAnswersFromPlayers(players, currentMatch)
     const answersWithVote = answers
-      .map((answer) => {
-        return {
-          ...answer,
-          votedBy: getVotedBy(players, answer, currentMatch)
-        }
-      })
+      .map(answer => ({
+        ...answer,
+        votedBy: getVotedBy(players, answer, currentMatch)
+      }))
 
     // TODO: fix calcucate score logic if MAX_PER_MATCH != 2
     const answer0 = answersWithVote[0]
@@ -195,8 +193,8 @@ const Director = () => {
         </div>)
       }
       <div>Loading: {loading.toString()}</div>
-      <input type='button' value='Start' onClick={() => start()} disabled={currentScene !== 'HOME'} />
-      <input type='button' value='Restart' onClick={() => restart()} />
+      <input type="button" value="Start" onClick={() => start()} disabled={currentScene !== 'HOME'} />
+      <input type="button" value="Restart" onClick={() => restart()} />
     </div>
   )
 }
