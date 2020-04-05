@@ -9,8 +9,18 @@ There are 2 files you have to edit first before running the Joybox.
 By doing so you need to:
 
 1. Create your Firebase application in [Firebase console.](https://console.firebase.google.com)
-2. Replace example config in those files by the config of your Firebase application.
-3. Remove `.example` from the file name.
+2. Create realtime database and set rules to
+```
+{
+  "rules": {
+    ".read": true,
+    ".write": true
+  }
+}
+```
+3. Import `seedingDb.json` into realtime database
+4. Replace example config in those files by the config of your Firebase application.
+5. Remove `.example` from the file name.
 
 ## Project Structure
     .
