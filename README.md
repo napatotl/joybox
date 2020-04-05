@@ -12,6 +12,19 @@ By doing so you need to:
 2. Replace example config in those files by the config of your Firebase application.
 3. Remove `.example` from the file name.
 
+## Project Structure
+    .
+    ...
+    ├── src
+    │   ├── component         # low level component
+    │   ├── lib               # reuseable function (mostly pure function)
+    │   ├── page
+    │      ├── Director.js    # entry point of director view
+    │      ├── Player.js      # entry point of player view
+    │   ├── scene             # scene of game for player
+    │   ├── stories           # storybook
+    └── README.md
+    ...
 
 ## Available Scripts
 
