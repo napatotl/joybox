@@ -1,3 +1,15 @@
 {
-  "extends": "jitta"
+  "extends": "jitta",
+  "env": {
+    "browser": true,
+    "jest": true,
+    "node": true
+  },
+  "rules": {
+    "react/jsx-filename-extension": 0,
+    "react/react-in-jsx-scope": 0,
+    "react/prop-types": 0,
+    "jsx-a11y/anchor-is-valid": 0,
+    "no-restricted-syntax": ["error", "ForInStatement", "LabeledStatement", "WithStatement"]
+  }
 }
