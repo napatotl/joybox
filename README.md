@@ -1,5 +1,18 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Setup
+There are 2 files you edit first before running the Joybox.
+```
+/src/service/firebase.js.example
+/.firebaserc.example
+```
+By doing so you need to:
+
+1. Create your Firebase application in [Firebase console.](https://console.firebase.google.com)
+2. Replace example config in those files by the config of your Firebase application.
+3. Remove `.example` from the file name.
+
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -29,4 +42,4 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 ### `yarn storybook`
 
-For components develop
+For components development
