@@ -1,7 +1,7 @@
 import React from 'react'
 import { Row, Col, Input, Button, Typography } from 'antd'
 import Container from '../component/Container'
-import TotalScore from '../component/TotalScore'
+import ScoreBoard from '../component/ScoreBoard'
 
 const { Title } = Typography
 
@@ -30,7 +30,7 @@ const Component = ({ isAnswerer, question, setAnswerText, answer, timer, player,
             <Button size='large' onClick={answer} disabled={player.answer}>Submit</Button>
           </Col>
         </Row>
-        <TotalScore players={players} />
+        <ScoreBoard players={players} />
       </Container>
     )
   }
@@ -46,7 +46,7 @@ const Component = ({ isAnswerer, question, setAnswerText, answer, timer, player,
           <Title level={2}>Not your turn, Please wait.</Title>
         </Col>
       </Row>
-      <TotalScore players={players} />
+      <ScoreBoard players={players} />
     </Container>
   )
 }

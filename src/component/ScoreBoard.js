@@ -1,7 +1,7 @@
 import React from 'react'
 import { Row, Col, Typography } from 'antd'
 import 'antd/dist/antd.css'
-import Player from '../component/Player'
+import Player from './Player'
 const { Title } = Typography
 
 const Component = ({ players }) => {
