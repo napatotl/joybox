@@ -43,8 +43,8 @@ const players = {
 export const Answerer = () => (
   <Vote
     timer={30}
-    isAnswerer={true}
-    question={'1 + 1 = ?'}
+    isAnswerer
+    question="1 + 1 = ?"
     player={player}
     players={players}
     vote={action('vote')}
@@ -56,7 +56,7 @@ export const NotAnswerer = () => (
   <Vote
     timer={30}
     isAnswerer={false}
-    question={'1 + 1 = ?'}
+    question="1 + 1 = ?"
     player={player}
     players={players}
     vote={action('vote')}

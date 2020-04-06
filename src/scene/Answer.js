@@ -1,11 +1,12 @@
 import React from 'react'
-import { Row, Col, Input, Button, Typography, Divider, } from 'antd'
+import { Row, Col, Input, Button, Typography } from 'antd'
 import Container from '../component/Container'
 import ScoreBoard from '../component/ScoreBoard'
 
 const { Title } = Typography
 
-const Component = ({ isAnswerer, question, setAnswerText, answer, timer, player, players }) => {
+const Component = (props) => {
+  const { isAnswerer, question, setAnswerText, answer, timer, player, players, answerText } = props
   if (isAnswerer) {
     return (
       <Container>
@@ -21,13 +22,13 @@ const Component = ({ isAnswerer, question, setAnswerText, answer, timer, player,
         </Row>
         <Row>
           <Col span={12} offset={6}>
-            <Input size='large' onChange={(e) => setAnswerText(e.target.value)} />
+            <Input size="large" disabled={player.answer} onChange={e => setAnswerText(e.target.value)} />
           </Col>
         </Row>
         <Row>
           <Col span={12} offset={6}>
             {/* TODO: validate input */}
-            <Button size='large' onClick={answer} disabled={player.answer}>Submit</Button>
+            <Button size="large" onClick={answer} disabled={player.answer || answerText === ''}>Submit</Button>
           </Col>
         </Row>
         <ScoreBoard players={players} />

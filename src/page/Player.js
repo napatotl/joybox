@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import '../App.css'
 import { useObject } from 'react-firebase-hooks/database'
 import firebase from 'firebase'
+
+import '../App.css'
 
 import Home from '../scene/Home'
 import Answer from '../scene/Answer'
@@ -19,17 +20,17 @@ const login = async (playerName, setPlayerKey) => {
   // TODO: set into context + localStorage or cookie in case player refresh page
 }
 
-const answer = (playerKey, answer) => {
-  return playersRef.child(playerKey).update({
-    answer
+const answer = (playerKey, answerText) => (
+  playersRef.child(playerKey).update({
+    answer: answerText
   })
-}
+)
 
-const vote = (playerKey, answeredBy) => {
-  return playersRef.child(playerKey).update({
+const vote = (playerKey, answeredBy) => (
+  playersRef.child(playerKey).update({
     voteTo: answeredBy
   })
-}
+)
 
 const Player = () => {
   // state for input
@@ -48,13 +49,13 @@ const Player = () => {
     let playerListener
     if (playerKey !== -1) {
       playerListener = playerRef.on('value', (snapshot) => {
-        const player = snapshot.val()
-        if (!player) {
+        const loggedInPlayer = snapshot.val()
+        if (!loggedInPlayer) {
           // restart case
           setPlayerKey(-1)
           playerRef.off('value', playerListener)
         } else {
-          setPlayer(player)
+          setPlayer(loggedInPlayer)
         }
       })
     }
@@ -104,6 +105,7 @@ const Player = () => {
           isAnswerer={isAnswerer}
           question={question}
           setAnswerText={setAnswerText}
+          answerText={answerText}
           player={player}
           answer={() => answer(playerKey, answerText)}
           players={players}
@@ -120,7 +122,7 @@ const Player = () => {
           question={question}
           players={players}
           player={player}
-          vote={(answeredBy) => vote(playerKey, answeredBy)}
+          vote={answeredBy => vote(playerKey, answeredBy)}
         />
       )
     }

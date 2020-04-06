@@ -3,7 +3,7 @@ import VoteResult from '../scene/VoteResult'
 
 export default {
   title: '[Scene] VoteResult',
-  component: VoteResult,
+  component: VoteResult
 }
 
 const answers = [
@@ -36,7 +36,7 @@ const players = {
 
 export const Normal = () => (
   <VoteResult
-    question={'1 + 1 = ?'}
+    question="1 + 1 = ?"
     answers={answers}
     players={players}
   />
