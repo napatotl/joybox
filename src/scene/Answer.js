@@ -1,10 +1,11 @@
 import React from 'react'
 import { Row, Col, Input, Button, Typography, Divider, } from 'antd'
 import Container from '../component/Container'
+import ScoreBoard from '../component/ScoreBoard'
 
 const { Title } = Typography
 
-const Component = ({ isAnswerer, question, setAnswerText, answer, timer, player }) => {
+const Component = ({ isAnswerer, question, setAnswerText, answer, timer, player, players }) => {
   if (isAnswerer) {
     return (
       <Container>
@@ -29,6 +30,7 @@ const Component = ({ isAnswerer, question, setAnswerText, answer, timer, player 
             <Button size='large' onClick={answer} disabled={player.answer}>Submit</Button>
           </Col>
         </Row>
+        <ScoreBoard players={players} />
       </Container>
     )
   }
@@ -44,6 +46,7 @@ const Component = ({ isAnswerer, question, setAnswerText, answer, timer, player 
           <Title level={4}>Wait for response... {timer} seconds</Title>
         </Col>
       </Row>
+      <ScoreBoard players={players} />
     </Container>
   )
 }

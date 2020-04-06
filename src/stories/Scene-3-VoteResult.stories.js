@@ -36,8 +36,8 @@ const players = {
 
 export const Normal = () => (
   <VoteResult
-      question={'1 + 1 = ?'}
-      answers={answers}
-      players={players}
-    />
+    question={'1 + 1 = ?'}
+    answers={answers}
+    players={players}
+  />
 )

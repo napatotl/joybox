@@ -86,7 +86,7 @@ const Player = () => {
 
   switch (currentScene) {
     case 'HOME': {
-      const loggedIn = playerKey !== -1      
+      const loggedIn = playerKey !== -1
       return (
         <Home
           playerName={playerName}
@@ -106,6 +106,7 @@ const Player = () => {
           setAnswerText={setAnswerText}
           player={player}
           answer={() => answer(playerKey, answerText)}
+          players={players}
         />
       )
     }

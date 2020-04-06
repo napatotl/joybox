@@ -4,7 +4,7 @@ import Vote from '../scene/Vote'
 
 export default {
   title: '[Scene] Vote',
-  component: Vote,
+  component: Vote
 }
 
 const player = {
@@ -42,24 +42,24 @@ const players = {
 
 export const Answerer = () => (
   <Vote
-      timer={30}
-      isAnswerer={true}
-      question={'1 + 1 = ?'}
-      player={player}
-      players={players}
-      vote={action('vote')}
-      answers={answers}
-    />
+    timer={30}
+    isAnswerer={true}
+    question={'1 + 1 = ?'}
+    player={player}
+    players={players}
+    vote={action('vote')}
+    answers={answers}
+  />
 )
 
 export const NotAnswerer = () => (
   <Vote
-      timer={30}
-      isAnswerer={false}
-      question={'1 + 1 = ?'}
-      player={player}
-      players={players}
-      vote={action('vote')}
-      answers={answers}
-    />
+    timer={30}
+    isAnswerer={false}
+    question={'1 + 1 = ?'}
+    player={player}
+    players={players}
+    vote={action('vote')}
+    answers={answers}
+  />
 )
