@@ -35,13 +35,21 @@ const Scene = {
     }))
   },
   toVote: async (currentMatch) => {
+    await gameRef.update({
+      loading: true
+    })
+
+    // wait for debouce answer
+    await wait(1)
+
     const players = (await playersRef.once('value')).val()
     const answers = getAnswersFromPlayers(players, currentMatch)
 
     gameRef.update({
       currentScene: 'VOTE',
       timer: VOTE_TIMER,
-      answers
+      answers,
+      loading: false
     })
   },
   toVoteResult: async (currentMatch) => {

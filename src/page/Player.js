@@ -4,6 +4,7 @@ import firebase from 'firebase'
 
 import '../App.css'
 
+import { useDebounce } from '../lib/hook'
 import Home from '../scene/Home'
 import Answer from '../scene/Answer'
 import Vote from '../scene/Vote'
@@ -39,10 +40,19 @@ const Player = () => {
 
   // state for logged in player
   const [playerKey, setPlayerKey] = useState(-1) // -1 means not login
-  const [player, setPlayer] = useState({})
+  const [player, setPlayer] = useState({
+    answererMatchIndexes: []
+  })
 
   const [gameObj] = useObject(firebase.database().ref('game'))
   const [playersObj] = useObject(firebase.database().ref('players'))
+  const debouncedAnswerText = useDebounce(answerText, 500)
+
+  useEffect(() => {
+    if (playerKey !== '-1' && debouncedAnswerText) {
+      answer(playerKey, debouncedAnswerText)
+    }
+  }, [debouncedAnswerText, playerKey])
 
   useEffect(() => {
     const playerRef = firebase.database().ref(`players/${playerKey}`)
@@ -105,9 +115,6 @@ const Player = () => {
           isAnswerer={isAnswerer}
           question={question}
           setAnswerText={setAnswerText}
-          answerText={answerText}
-          player={player}
-          answer={() => answer(playerKey, answerText)}
           players={players}
         />
       )
@@ -132,6 +139,7 @@ const Player = () => {
           question={question}
           answers={answers}
           players={players}
+          timer={timer}
         />
       )
     }
