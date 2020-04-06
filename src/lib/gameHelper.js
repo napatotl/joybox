@@ -49,7 +49,7 @@ export const getPlayersWithAnswererMatchIndexes = (players, matches) => {
 
 export const matchingPlayers = (players) => {
   // TODO: fix this logic if MAX_PER_MATCH != 2
-  // TOOD: fix logic for choosing question
+  const questions = [...QUESTIONS]
   const matches = []
   const playerKeys = Object.keys(players)
   for (let x = 0; x < playerKeys.length; x += 1) {
@@ -57,9 +57,11 @@ export const matchingPlayers = (players) => {
     for (let y = x + 1; y < playerKeys.length; y += 1) {
       const yKey = playerKeys[y]
       const matchPlayers = [xKey, yKey].sort()
+      const questionIndex = Math.floor(Math.random() * QUESTIONS.length)
+      const [question] = questions.splice(questionIndex, 1)
       matches.push({
-        players: matchPlayers,
-        question: QUESTIONS[Math.floor(Math.random() * QUESTIONS.length)]
+        question,
+        players: matchPlayers
       })
     }
   }
