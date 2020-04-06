@@ -57,7 +57,7 @@ export const matchingPlayers = (players) => {
     for (let y = x + 1; y < playerKeys.length; y += 1) {
       const yKey = playerKeys[y]
       const matchPlayers = [xKey, yKey].sort()
-      const questionIndex = Math.floor(Math.random() * QUESTIONS.length)
+      const questionIndex = Math.floor(Math.random() * questions.length)
       const [question] = questions.splice(questionIndex, 1)
       matches.push({
         question,

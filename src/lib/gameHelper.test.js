@@ -1,4 +1,5 @@
 import { matchingPlayers } from './gameHelper'
+import { MAX_PER_MATCH, QUESTIONS } from '../config'
 
 const players = {
   foo1: {
@@ -22,6 +23,17 @@ const players = {
 }
 describe('gameHelper', () => {
   describe('matchingPlayers', () => {
+    it('should return correctly matches', () => {
+      const matches = matchingPlayers(players)
+
+      for (const match of matches) {
+        expect(match.players).toBeInstanceOf(Array)
+        expect(match.players.length).toEqual(MAX_PER_MATCH)
+
+        expect(typeof match.question).toEqual('string')
+        expect(QUESTIONS).toContain(match.question)
+      }
+    })
     it('should return matches with same amount of questions for each players', () => {
       const matches = matchingPlayers(players)
       const player1MatchCount = matches.filter(match => match.players.includes('foo1')).length
