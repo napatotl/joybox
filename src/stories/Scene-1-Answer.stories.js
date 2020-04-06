@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { action } from '@storybook/addon-actions'
 import Answer from '../scene/Answer'
 
@@ -39,16 +39,13 @@ const player = {
 
 
 export const Answerer = () => {
-  const [answerText, setAnswerText] = useState('')
   return (
     <Answer
-      isAnswerer
       timer={30}
+      isAnswerer
       question="1 + 1 = ?"
       player={player}
-      setAnswerText={setAnswerText}
-      answerText={answerText}
-      answer={action('answer')}
+      setAnswerText={action('type')}
       players={players}
     />
   )
@@ -61,7 +58,6 @@ export const NotAnswerer = () => (
     question="1 + 1 = ?"
     player={player}
     setAnswerText={action('type')}
-    answer={action('answer')}
     players={players}
   />
 )

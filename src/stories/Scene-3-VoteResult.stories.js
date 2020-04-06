@@ -36,6 +36,7 @@ const players = {
 
 export const Normal = () => (
   <VoteResult
+    timer={30}
     question="1 + 1 = ?"
     answers={answers}
     players={players}

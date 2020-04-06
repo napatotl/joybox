@@ -11,9 +11,9 @@ const Component = (props) => {
   return (
     <Container>
       <Row>
-          <Col span={12} offset={6}>
-            <Title level={4}>{`Timer: ${timer}`}</Title>
-          </Col>
+        <Col span={12} offset={6}>
+          <Title level={4}>{`Timer: ${timer}`}</Title>
+        </Col>
       </Row>
       <Row>
         <Col span={12} offset={6}>
@@ -21,17 +21,17 @@ const Component = (props) => {
         </Col>
       </Row>
       <Row gutter={16}>
-        <Col offset={6}></Col>
-          {answers.map((answer) => {
-            return (
-              <Col>
-                <Card size="small"  style={{ width: 300 }}>
-                  <Title level={4}>{answer.text}</Title>
-                  <Button disabled={isAnswerer || player.voteTo} onClick={() => vote(answer.answeredBy)}>Vote</Button>
-                </Card>
-              </Col>
-            )
-          })}
+        <Col offset={6} />
+        {answers.map(answer => ((
+          <Col>
+            <Card size="small" style={{ width: 300 }}>
+              <Title level={4}>{answer.text}</Title>
+              <Button disabled={isAnswerer || player.voteTo}onClick={() => vote(answer.answeredBy)}>
+                Vote
+              </Button>
+            </Card>
+          </Col>
+        )))}
       </Row>
       <ScoreBoard players={players} />
     </Container>
@@ -39,5 +39,3 @@ const Component = (props) => {
 }
 
 export default Component
-
-
