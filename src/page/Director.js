@@ -24,17 +24,15 @@ const Scene = {
       }
     }
     playersRef.set(newPlayers)
-    return gameRef.transaction((game) => {
-      return {
-        ...game,
-        currentScene: 'ANSWER',
-        currentMatch: game.currentMatch + 1,
-        timer: ANSWER_TIMER,
-        answers: [],
-        question: match.question,
-        loading: false
-      }
-    })
+    return gameRef.transaction(game => ({
+      ...game,
+      currentScene: 'ANSWER',
+      currentMatch: game.currentMatch + 1,
+      timer: ANSWER_TIMER,
+      answers: [],
+      question: match.question,
+      loading: false
+    }))
   },
   toVote: async (currentMatch) => {
     const players = (await playersRef.once('value')).val()
@@ -87,14 +85,14 @@ const Scene = {
       timer: VOTE_RESULT_TIMER
     })
   },
-  toEnd: async () => {
-    return gameRef.update({
+  toEnd: async () => (
+    gameRef.update({
       currentScene: 'END',
       currentMatch: 0,
       question: '',
       answers: []
     })
-  }
+  )
 }
 
 const countdown = () => (
@@ -115,8 +113,8 @@ const countdown = () => (
   })
 )
 
-const restart = () => {
-  return rootRef.set({
+const restart = () => (
+  rootRef.set({
     game: {
       loading: false,
       answers: [],
@@ -128,11 +126,11 @@ const restart = () => {
     players: {},
     matches: []
   })
-}
+)
 
 const start = async () => {
   const players = (await playersRef.once('value')).val() || {}
-  if (Object.keys(players) <= MINIMUM_PLAYER) {
+  if (Object.keys(players).length < MINIMUM_PLAYER) {
     return window.alert(`at least ${MINIMUM_PLAYER} players required.`)
   }
 
@@ -160,6 +158,7 @@ const start = async () => {
     await Scene.toVoteResult(i)
     await countdown()
   }
+  return null
   // Scene.toEnd()
 }
 
@@ -176,7 +175,7 @@ const Director = () => {
     currentMatch,
     currentScene,
     timer,
-    question,
+    question
     // answers
   } = gameObj.val()
 
@@ -185,12 +184,14 @@ const Director = () => {
     <div>
       <div>Current Scene: {currentScene}</div>
       {
-        currentScene !== 'HOME' && 
-        (<div>
-          <div>Current Match: {currentMatch}</div>
-          <div>Timer: {timer}</div>
-          <div>Question: {question}</div>
-        </div>)
+        currentScene !== 'HOME' &&
+        (
+          <div>
+            <div>Current Match: {currentMatch}</div>
+            <div>Timer: {timer}</div>
+            <div>Question: {question}</div>
+          </div>
+        )
       }
       <div>Loading: {loading.toString()}</div>
       <input type="button" value="Start" onClick={() => start()} disabled={currentScene !== 'HOME'} />
