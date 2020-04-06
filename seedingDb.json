@@ -1,0 +1,11 @@
+{
+  "game": {
+    "currentScene": "HOME",
+    "currentMatch": 0,
+    "question": "",
+    "answers": [],
+    "loading": false
+  },
+  "players": {},
+  "matches": []
+}

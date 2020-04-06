@@ -79,6 +79,7 @@ const Player = () => {
     answers
   } = gameObj.val()
   const players = playersObj.val()
+
   if (loading) {
     return <div>LOADING . . .</div>
   }

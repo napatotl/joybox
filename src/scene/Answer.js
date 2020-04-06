@@ -1,5 +1,5 @@
 import React from 'react'
-import { Row, Col, Input, Button, Typography } from 'antd'
+import { Row, Col, Input, Button, Typography, Divider, } from 'antd'
 import Container from '../component/Container'
 import ScoreBoard from '../component/ScoreBoard'
 
@@ -21,7 +21,7 @@ const Component = ({ isAnswerer, question, setAnswerText, answer, timer, player,
         </Row>
         <Row>
           <Col span={12} offset={6}>
-            <Input size='large' onChange={(e) => setAnswerText(e.target.value)}/>
+            <Input size='large' onChange={(e) => setAnswerText(e.target.value)} />
           </Col>
         </Row>
         <Row>
@@ -37,13 +37,13 @@ const Component = ({ isAnswerer, question, setAnswerText, answer, timer, player,
   return (
     <Container>
       <Row>
-          <Col span={12} offset={6}>
-            <Title level={4}>{`Timer: ${timer}`}</Title>
-          </Col>
+        <Col span={12} offset={6}>
+          <Title level={2}>{`Question: ${question}`}</Title>
+        </Col>
       </Row>
       <Row>
         <Col span={12} offset={6}>
-          <Title level={2}>Not your turn, Please wait.</Title>
+          <Title level={4}>Wait for response... {timer} seconds</Title>
         </Col>
       </Row>
       <ScoreBoard players={players} />
@@ -52,5 +52,3 @@ const Component = ({ isAnswerer, question, setAnswerText, answer, timer, player,
 }
 
 export default Component
-
-
